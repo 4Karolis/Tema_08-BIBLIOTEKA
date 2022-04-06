@@ -9,21 +9,22 @@ namespace Tema_08___BIBLIOTEKA
         private string _siuntejas;
         private string _gavejas;
         private decimal _moketiViso;
-        private string SaskaitosNumeris;
+        public string SaskaitosNumeris;
 
-        public Saskaita(string siuntejas, string gavejas, decimal moketiViso, string saskaitosNumeris)
+        public Saskaita(string siuntejas, string gavejas, decimal moketiViso)
         {
-            Siuntejas = siuntejas;
-            Gavejas = gavejas;
-            MoketiViso = moketiViso;
-            SaskaitosNumeris = saskaitosNumeris;
+            _siuntejas = siuntejas;
+            _gavejas = gavejas;
+            _moketiViso = moketiViso;
+            SaskaitosNumeris = string.Empty;
+            SaskaitosNumeris = KurtiSaskaitosNumeri();
         }
 
-        public Saskaita
         public string SaskaitosNumeris { get; private set; }
+              
         private void KurtiSaskaitosNumeri()
         {
-            SaskaitosNumeris = string.Format("{NR}_2022_balandzio_07_01", //parametrai, );
+            SaskaitosNumeris = string.Format("{}_{}_{}_{}_{}", //parametrai, );
         }
     }
 }
