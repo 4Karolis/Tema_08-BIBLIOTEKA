@@ -2,52 +2,52 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Library
-{
-    public struct Book
+    namespace Library
     {
-        //deklaruoti field'ai
-        private string _name;
-        private string _id;
+        public struct Book
+        {
+            //deklaruoti field'ai
+            private string _name;
+            private string _id;
 
-        public string Name //Tampa Properties nebe FIeld
-        {
-            get // paimam
+            public string Name //Tampa Properties nebe FIeld
             {
-                return _name;
+                get // paimam
+                {
+                    return _name;
+                }
+                private set // uzsetinam verte >> darasius PRO=IVATE, neleis uzsetint   
+                {
+                    _name = value;
+                    //galim daryt validacija per koki FOR ar panasiai viduj
+                }
             }
-            private set // uzsetinam verte >> darasius PRO=IVATE, neleis uzsetint   
+            public string id
             {
-                _name = value;
-                //galim daryt validacija per koki FOR ar panasiai viduj
+                get
+                {
+                    return _id;
+                }
+                private set
+                {
+                    _id = value;
+                }
             }
-        }
-        public string id
-        {
-            get
+            public string LocalId { get; private set; } // naujoviskas GET SET variantas
+            public Book(string name, string id)
             {
-                return _id;
+                _name = name;
+                _id = id;
+                LocalId = string.Empty;
+                CreateLocalId();
             }
-            private set
+            //private void setValue() //PVZ
+            //{
+            //    Name = "Belekas"; // per cia galim prisetint veiksme, net jei settet PRIVATE, jis atsiranda settet ties VALUE
+            //}
+            private void CreateLocalId()
             {
-                _id = value;
+                LocalId = string.Format("{0}_{1}", Name, id);
             }
-        }
-        public string LocalId { get; private set; } // naujoviskas GET SET variantas
-        public Book(string name, string id)
-        {
-            _name = name;
-            _id = id;
-            LocalId = string.Empty;
-            CreateLocalId();
-        }
-        //private void setValue() //PVZ
-        //{
-        //    Name = "Belekas"; // per cia galim prisetint veiksme, net jei settet PRIVATE, jis atsiranda settet ties VALUE
-        //}
-        private void CreateLocalId()
-        {
-            LocalId = string.Format("{0}_{1}", Name, id);
         }
     }
-}
